@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RPS</title>
+</head>
+<body>
+    <script>
+        //Initializing values and rules
+        let arrayRPS = ["r","p","s"];
+        let playerList = ["Rachel", "Denisa", "Robin", "Misael", "Shawn", "Andres", "Alberto", "Robbie", "Jake","Ryan. The Wild Card", "Ose. The Grand Champion!"]
+
+        let amountWon = 0;
+        let amountLoss = 0;
+        let amountTied = 0;
+        
+        //let welcome = alert("Welcome to the most Competitive game of Rock, Paper, Scissors")
+        //Logic behind annoying alerts
+        for (var i=0; i < 11; i++){
+            //let announcer = alert("You are now playing against "+ playerList[i]);
+            //              @@ Need to program in some validation
+            let playerChoice = prompt("Make your choice (r/p/s)");
+            let playerLower = playerChoice.toLowerCase();
+
+            let randomizer = Math.floor(Math.random() * 3);
+            console.log(randomizer);
+            let computerChoice = arrayRPS[randomizer];
+            console.log(computerChoice);
+
+            if (playerLower === computerChoice){
+                amountTied += 1;
+                let announcer = alert("You have Tied! You have tied a total of " + amountTied + " time/s");
+            }
+            else if ((playerLower === "r" && computerChoice === "s") || (playerLower ==="p" && computerChoice === "r") || (playerLower === "s" && computerChoice ==="p")){
+                amountWon +=1;
+                let announcer = alert("You have Won! The Computer chose " + computerChoice + " You have won a total of " + amountWon + " time/s");
+            }
+            else if ((playerLower === "r" && computerChoice === "p") || (playerLower ==="p" && computerChoice === "s") || (playerLower === "s" && computerChoice ==="r")){
+                amountLoss +=1;
+                let announcer = alert("You have Lost! The Computer chose " + computerChoice + "You have lost a total of " + amountLoss + " time/s");
+            }
+            //Non-recursive Validation
+            else{
+                let error = alert("Not a Valid Input")
+            }
+        }
+        //Aggregate Amount
+        alert("You Won a Total of: " + amountWon + " time/s.\nYou also Lost a Total of: " + amountLoss + " time/s.\nLastly, You tied a Total of: " + amountTied + " time/s");
+    </script>
+</body>
+</html>
